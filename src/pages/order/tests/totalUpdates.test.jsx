@@ -1,6 +1,6 @@
 import { render, screen } from '../../../test-utils/testing-library-utils';
 import userEvent from '@testing-library/user-event';
-import Options from '../Options';
+import Options from '../../entry/Options';
 
 test('updated scoop subtotal when scoops change', async () => {
   const user = userEvent.setup();
