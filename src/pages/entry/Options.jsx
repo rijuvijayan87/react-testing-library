@@ -13,12 +13,14 @@ export default function Options({ optionType }) {
   const [error, setError] = useState(false);
   const { totals } = useOrderDetails();
 
-  // optionType is 'scoops' or 'toppings
   useEffect(() => {
     axios
       .get(`http://localhost:3030/${optionType}`)
       .then((response) => setItems(response.data))
-      .catch((error) => setError(true));
+      .catch((error) => {
+        console.log(error);
+        setError(true);
+      });
   }, [optionType]);
 
   if (error) {
