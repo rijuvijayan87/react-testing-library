@@ -1,12 +1,11 @@
-import { render } from '@testing-library/react';
-import { OrderDetailsProvider } from '../contexts/OrderDetails';
+import { render } from "@testing-library/react";
+import { OrderDetailsProvider } from "../contexts/OrderDetails";
 
-//https://testing-library.com/docs/react-native-testing-library/setup#custom-render
 const renderWithContext = (ui, options) =>
   render(ui, { wrapper: OrderDetailsProvider, ...options });
 
-//reexport everything
-export * from '@testing-library/react';
+// re-export everything
+export * from "@testing-library/react";
 
-//Override render method
+// override render method
 export { renderWithContext as render };

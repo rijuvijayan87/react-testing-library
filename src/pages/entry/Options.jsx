@@ -1,17 +1,19 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Row from 'react-bootstrap/Row';
-import { pricePerItem } from '../../constants';
-import { useOrderDetails } from '../../contexts/OrderDetails';
-import { formatCurrency } from '../../utils';
-import AlertBanner from '../common/AlertBanner';
 import ScoopOption from './ScoopOption';
 import ToppingOption from './ToppingOption';
+import AlertBanner from '../common/AlertBanner';
+import { pricePerItem } from '../../constants';
+import { formatCurrency } from '../../utilities';
+import { useOrderDetails } from '../../contexts/OrderDetails';
 
 export default function Options({ optionType }) {
   const [items, setItems] = useState([]);
   const [error, setError] = useState(false);
   const { totals } = useOrderDetails();
+
+  // optionType is 'scoops' or 'toppings
   useEffect(() => {
     axios
       .get(`http://localhost:3030/${optionType}`)
@@ -20,8 +22,10 @@ export default function Options({ optionType }) {
   }, [optionType]);
 
   if (error) {
+    // @ts-ignore
     return <AlertBanner />;
   }
+
   const ItemComponent = optionType === 'scoops' ? ScoopOption : ToppingOption;
   const title = optionType[0].toUpperCase() + optionType.slice(1).toLowerCase();
 
