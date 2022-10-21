@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Row from 'react-bootstrap/Row';
-import { pricePerItem } from '../../contants';
+import { pricePerItem } from '../../constants';
 import { useOrderDetails } from '../../contexts/OrderDetails';
 import { formatCurrency } from '../../utils';
 import AlertBanner from '../common/AlertBanner';
